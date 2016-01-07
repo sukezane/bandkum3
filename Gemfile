@@ -46,3 +46,6 @@ group :development do
 end
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
