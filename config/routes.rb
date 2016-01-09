@@ -9,4 +9,7 @@ Rails.application.routes.draw do
 }
 
   root to: 'home#index'
+
+  get  'chat' => 'chat#index'
+  post 'post' => 'chat#post'
 end
