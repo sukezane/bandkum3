@@ -1,18 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
 <div class="chatboxhead">
   <div class="chatboxtitle">
     <i class="fa fa-comments"></i>
@@ -24,7 +9,6 @@
     &nbsp;&nbsp;
     <%= link_to "<i class='fa  fa-times'></i> ".html_safe, "#", class: "closeChat", "data-cid" => @conversation.id %>
   </div>
-  <br clear="all"/>
 </div>
 <div class="chatboxcontent">
   <% if @messages.any? %>
@@ -32,7 +16,7 @@
   <% end %>
 </div>
 <div class="chatboxinput">
-  <%= form_for([@conversation, @message], :remote => true, :html => {id: "conversation_form_#{@conversation.id}"}) do |f| %>
+  <%= form_for([@conversation, @message], :remote => true, :html => { id: "conversation_form_#{@conversation.id}"}) do |f| %>
       <%= f.text_area :body, class: "chatboxtextarea", "data-cid" => @conversation.id %>
   <% end %>
 </div>

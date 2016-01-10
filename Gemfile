@@ -51,3 +51,8 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 gem 'pusher'
+
+gem 'private_pub'
+gem 'thin'
+
+gem 'jquery-turbolinks'
