@@ -6,3 +6,4 @@ Pusher.url = "https://7cadebb65622e49e0891:d364bc96b97a34a5d397@api.pusherapp.co
 #   message: 'hello world'
 # })
 Pusher.logger = Rails.logger
+
