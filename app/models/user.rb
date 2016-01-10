@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
          validates :terms, acceptance: true
          validates :name, presence: true, length: { maximum: 50 }
+#Chatty
+  has_many :conversations, :foreign_key => :sender_id
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first

@@ -3,8 +3,10 @@
 <head>
   <title>Bandkum3</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+   <%= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
 </head>
 <body>
 
@@ -21,7 +23,12 @@
  <p class="alert"><%= alert %></p>
 
 <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-<%= yield %>
 
+<!-- chatty -->
+
+
+<div class="container">
+<%= yield %>
+  </div>
 </body>
 </html>

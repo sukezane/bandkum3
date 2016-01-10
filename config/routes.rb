@@ -12,4 +12,8 @@ Rails.application.routes.draw do
 
   get  'chat' => 'chat#index'
   post 'post' => 'chat#post'
+
+  resources :conversations do
+    resources :messages
+  end
 end
