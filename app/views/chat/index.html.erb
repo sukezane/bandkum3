@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pusher Test</title>
+  <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+  <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+    var pusher = new Pusher('7cadebb65622e49e0891', {
+      encrypted: true
+    });
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('my_event', function(data) {
+      alert(data.message);
+    });
+    
+    var pusher = new Pusher('<%= 7cadebb65622e49e0891 %>');
+    var channel = pusher.subscribe('general_channel');
+    channel.bind('chat_event', function(data) {
+      var messagelog = document.getElementById('messagelog');
+      var messagediv = document.createElement('div');
+      messagediv.innerHTML = data.message;
+      messagelog.appendChild(messagediv);
+    });
+  </script>
+
+</head>
+<body>
+
+<%= form_tag('/post', :remote => true) do %>
+<%= text_field_tag 'message' %>
+<%= submit_tag 'send' %>
+<% end %>
+
+<div id='messagelog'></div>
+  </body>
+  </html>
