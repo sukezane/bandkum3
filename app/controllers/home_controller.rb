@@ -5,8 +5,10 @@ class HomeController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+     @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
       # @conversations = Conversation.involving(current_user).order("created_at DESC")
+      @q = User.ransack(params[:q])
+     @users = @q.result
   end
 
   # GET /users/1
@@ -23,6 +25,10 @@ class HomeController < ApplicationController
   # GET /users/1/edit
   def edit
   end
+
+   def search
+  @users = User.search(params[:search])
+   end
 
   # POST /users
   # POST /users.json

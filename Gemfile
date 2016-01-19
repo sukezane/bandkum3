@@ -56,3 +56,5 @@ gem 'private_pub'
 gem 'thin'
 
 gem 'jquery-turbolinks'
+
+gem 'ransack'
