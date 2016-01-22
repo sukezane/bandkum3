@@ -14,7 +14,7 @@ class HomeController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-
+    @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
   end
 
   # GET /users/new
@@ -75,7 +75,9 @@ class HomeController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      # @user = User.find(params[:id])
+       @user = current_user.id
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,12 +1,35 @@
-<h1>Listing Users</h1>
-
  <%= search_form_for(@q,url: "/", method: :get) do |f| %>
-  <%= f.label :名前 %>
-  <%= f.text_field :name_eq, class: "form-control", placeholder: "完全一致" %>
-
-    <%= f.submit '検索', class: "btn btn-primary" %>
-    <%= link_to 'クリア', url_for, class: "btn btn-default" %>
+  <%= f.search_field :name_or_part_1_or_part_2_cont, class: "form-control", placeholder: "検索" %>
+   <%= f.submit '検索', class: "btn btn-primary" %>
   <% end %>
+
+<br>
+  <%= search_form_for(@q,url: "/", method: :get) do |f| %>
+  <%= link_to '初期値に戻す', url_for, class: "btn btn-default" %>
+<br>
+  <%= f.select :gender_eq, options_from_collection_for_select(@users, "id" , "gender"), prompt: '活動状況'%>
+<br>
+  <%= f.select :part_1_eq, options_from_collection_for_select(@users, "id" , "part_1"), prompt: 'パート'%>
+<br>
+
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "id" , "part_2"), prompt: 'パート'%>
+<br>
+  <%= f.select :current_place, options_from_collection_for_select(@users, "id" , "current_place"), prompt: '地域'%>
+<br>
+
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "id" , "part_2"), prompt: '年齢'%>
+<br>
+
+  <%= f.select :gender_eq, options_from_collection_for_select(@users, "id" , "gender"), prompt: '性別'%>
+<br>
+
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "id" , "part_2"), prompt: 'ジャンル'%>
+<br>
+ <%= f.search_field :name_or_part_1_or_part_2_cont, class: "form-control", placeholder: "検索" %>
+<br>
+    <%= f.submit '検索', class: "btn btn-primary" %>
+    
+   <% end %>
 
 <table>
   <thead>
@@ -51,6 +74,7 @@
         <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
                     "data-sid" => current_user.id, "data-rip" => user.id %>
       </td>
+      <td><%= link_to 'Show', :controller => "home", :action => "show" %></td>
     </tr>
 <% end %>
 
