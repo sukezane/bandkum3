@@ -9,18 +9,18 @@
 <br>
   <%= f.select :gender_eq, options_from_collection_for_select(@users, "id" , "gender"), prompt: '活動状況'%>
 <br>
-  <%= f.select :part_1_eq, options_from_collection_for_select(@users, "id" , "part_1"), prompt: 'パート'%>
+  <%= f.select :part_1_eq, options_from_collection_for_select(@users, "part_1" , "part_1"), prompt: 'パート'%>
 <br>
 
-  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "id" , "part_2"), prompt: 'パート'%>
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "part_2" , "part_2"), prompt: 'パート'%>
 <br>
-  <%= f.select :current_place, options_from_collection_for_select(@users, "id" , "current_place"), prompt: '地域'%>
-<br>
-
-  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "id" , "part_2"), prompt: '年齢'%>
+  <%= f.select :current_place, options_from_collection_for_select(@users, "current_place" , "current_place"), prompt: '地域'%>
 <br>
 
-  <%= f.select :gender_eq, options_from_collection_for_select(@users, "id" , "gender"), prompt: '性別'%>
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "Birth_date" , "Birth_date"), prompt: '年齢'%>
+<br>
+
+  <%= f.select :gender_eq, options_from_collection_for_select(@users, "gender" , "gender"), prompt: '性別'%>
 <br>
 
   <%= f.select :part_2_eq, options_from_collection_for_select(@users, "id" , "part_2"), prompt: 'ジャンル'%>
