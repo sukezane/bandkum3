@@ -8,7 +8,7 @@ class HomeController < ApplicationController
      @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
       # @conversations = Conversation.involving(current_user).order("created_at DESC")
       @q = User.ransack(params[:q])
-     @users = @q.result
+     @users = @q.result(distinct: true)
   end
 
   # GET /users/1

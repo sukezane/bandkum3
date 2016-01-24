@@ -4,7 +4,7 @@
   <% end %>
 
 <br>
-  <%= search_form_for(@q,url: "/", method: :get) do |f| %>
+  <%= search_form_for(@q,url: "/",format: :pdf, method: :get) do |f| %>
   <%= link_to '初期値に戻す', url_for, class: "btn btn-default" %>
 <br>
   <%= f.select :gender_eq, options_from_collection_for_select(@users, "id" , "gender"), prompt: '活動状況'%>
@@ -74,35 +74,6 @@
         <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
                     "data-sid" => current_user.id, "data-rip" => user.id %>
       </td>
-      <td><%= link_to 'Show', :controller => "home", :action => "show" %></td>
+      <td><%= link_to 'Show', user %></td>
     </tr>
 <% end %>
-
-<hr>
-    <h3>Your Conversations</h3>
-
-    <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.try(:any?) %>
-          <ul class="media-list">
-            <% @conversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                  </div>
-                </li>
-
-            <% end %>
-          </ul>
-      <% else %>
-          <p>You have no conversations. Click send message with any user to create one.</p>
-      <% end %>
-    </div>
-
-  </div>
-
-  <div class="col-md-4">
-
-  </div>
