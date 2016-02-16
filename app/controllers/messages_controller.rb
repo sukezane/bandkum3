@@ -8,6 +8,9 @@ class MessagesController < ApplicationController
     @message.save!
 
     @path = conversation_path(@conversation)
+    # @path = "/#{:user_id}/conversations"(@conversation) 
+    # パスの指定間違い？
+
   end
 
   private

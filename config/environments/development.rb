@@ -46,7 +46,7 @@ config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port => 587,
     :domain => 'smtp.gmail.com',
-    :user_name => "kommunika1029@gmail.com", #ご自身のgmailアドレス
+    :user_name => "bandkum1029@gmail.com", #ご自身のgmailアドレス
     :password => "xray5094", #ご自身のgmailアドレスのパスワード
     :authentication => 'login',
 }

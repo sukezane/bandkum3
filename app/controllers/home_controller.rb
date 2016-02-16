@@ -5,14 +5,16 @@ class HomeController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+     # @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
       # @conversations = Conversation.involving(current_user).order("created_at DESC")
+      @q = User.ransack(params[:q])
+     @users = @q.result(distinct: true)
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
-
+    @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
   end
 
   # GET /users/new
@@ -23,6 +25,10 @@ class HomeController < ApplicationController
   # GET /users/1/edit
   def edit
   end
+
+   def search
+  @users = User.search(params[:search])
+   end
 
   # POST /users
   # POST /users.json
@@ -69,7 +75,9 @@ class HomeController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      # @user = User.find(params[:id])
+       @user = current_user.id
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

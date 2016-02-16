@@ -1,0 +1,14 @@
+<%= @user.email %>
+
+<%= link_to "current_user_show", current_user %>
+
+<% @users.each_with_index do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td>
+        <%= link_to "メッセージ", "#", class: "btn btn-success btn-xs start-conversation",
+                    "data-sid" => current_user.id, "data-rip" => user.id %>
+      </td>
+      <td><%= link_to 'Show', root_path %></td>
+    </tr>
+<% end %>

@@ -1,11 +1,48 @@
-<h1>Listing Users</h1>
+ <%= search_form_for(@q,url: "/", method: :get) do |f| %>
+  <%= f.search_field :name_or_part_1_or_part_2_cont, class: "form-control", placeholder: "検索" %>
+   <%= f.submit '検索', class: "btn btn-primary" %>
+  <% end %>
 
+<br>
+  <%= search_form_for(@q,url: "/",format: :pdf, method: :get) do |f| %>
+  <%= link_to '初期値に戻す', url_for, class: "btn btn-default" %>
+<br>
+  <%= f.select :gender_eq, options_from_collection_for_select(@users, "id" , "gender"), prompt: '活動状況'%>
+<br>
+  <%= f.select :part_1_eq, options_from_collection_for_select(@users, "part_1" , "part_1"), prompt: 'パート'%>
+<br>
+
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "part_2" , "part_2"), prompt: 'パート'%>
+<br>
+  <%= f.select :current_place, options_from_collection_for_select(@users, "current_place" , "current_place"), prompt: '地域'%>
+<br>
+
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "Birth_date" , "Birth_date"), prompt: '年齢'%>
+<br>
+
+  <%= f.select :gender_eq, options_from_collection_for_select(@users, "gender" , "gender"), prompt: '性別'%>
+<br>
+
+  <%= f.select :part_2_eq, options_from_collection_for_select(@users, "id" , "part_2"), prompt: 'ジャンル'%>
+<br>
+ <%= f.search_field :name_or_part_1_or_part_2_cont, class: "form-control", placeholder: "検索" %>
+<br>
+    <%= f.submit '検索', class: "btn btn-primary" %>
+    
+   <% end %>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>名前</th>
       <th>Email</th>
+      <th>user_id</th>
+      <th>誕生日</th>
+      <th>gender</th>
+      <th>パート</th>
+      <th>歴</th>
+      <th>パート</th>
+      <th>歴</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,6 +52,13 @@
       <tr>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
+        <td><%= user.user_id %></td>
+        <td><%= user.Birth_date %></td>
+        <td><%= user.gender %></td>
+        <td><%= user.part_1 %></td>
+        <td><%= user.start_at_part_1 %></td>
+        <td><%= user.part_2 %></td>
+        <td><%= user.start_at_part_2 %></td>
         
       </tr>
     <% end %>
@@ -30,34 +74,6 @@
         <%= link_to "Send Message", "#", class: "btn btn-success btn-xs start-conversation",
                     "data-sid" => current_user.id, "data-rip" => user.id %>
       </td>
+      <td><%= link_to 'Show', user %></td>
     </tr>
 <% end %>
-
-<hr>
-    <h3>Your Conversations</h3>
-
-    <div style="height: 400px; overflow-y: auto;">
-      <% if @conversations.try(:any?) %>
-          <ul class="media-list">
-            <% @conversations.each do |conversation| %>
-                <li class="media">
-                  <%= image_tag("http://placehold.it/50x50", class: "media-object pull-left") %>
-                  <div class="media-body">
-                    <%= link_to "", conversation_path(conversation), class: "conversation", "data-cid" => conversation.id %>
-                        <h4 class="media-heading"><%= conversation_interlocutor(conversation).name %></h4>
-                        <p><%= conversation.messages.last.nil? ? "No messages" : truncate(conversation.messages.last.body, length: 45) %></p>
-                  </div>
-                </li>
-
-            <% end %>
-          </ul>
-      <% else %>
-          <p>You have no conversations. Click send message with any user to create one.</p>
-      <% end %>
-    </div>
-
-  </div>
-
-  <div class="col-md-4">
-
-  </div>

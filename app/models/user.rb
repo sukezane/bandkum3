@@ -1,11 +1,13 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,:confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
          validates :terms, acceptance: true
-         validates :name, presence: true, length: { maximum: 50 }
+         validates :name, presence: true, length: { maximum: 20 }
+    # attr_accessor :login#emailとusernameでのログインを可能にする
+
 #Chatty
   has_many :conversations, :foreign_key => :sender_id
 
@@ -21,6 +23,24 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def self.search(search) #self.でクラスメソッドとしている
+    if search # Controllerから渡されたパラメータが!= nilの場合は、titleカラムを部分一致検索
+      User.where(['name LIKE ?', "%#{search}%"])
+    else
+      User.all #全て表示。
+    end
+  end
+
+  # deviseにログイン条件を上書きする
+  # def self.find_first_by_auth_conditions(warden_conditions)
+  #   conditions = warden_conditions.dup
+  #   if login = conditions.delete(:login)
+  #     where(conditions).where(["name = :value OR lower(email) = lower(:value)", { :value => login }]).first
+  #   else
+  #     where(conditions).first
+  #   end
+  # end
  
   # def self.find_for_twitter_oauth(auth, signed_in_resource=nil)
   #   user = User.where(:provider => auth.provider, :uid => auth.uid).first
