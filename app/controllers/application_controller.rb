@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+def index
+     # @users = User.where.not("id = ?",current_user.id).order("created_at DESC")
+      # @conversations = Conversation.involving(current_user).order("created_at DESC")
+      @q = User.ransack(params[:q])
+     @users = @q.result(distinct: true)
+  end
 
 protected
     def configure_permitted_parameters
