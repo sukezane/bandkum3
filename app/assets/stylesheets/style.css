@@ -261,6 +261,8 @@ dd {
     border:2px solid #aaa;
     background:#fff;
     z-index:2;
+    position:fixed;
+    display: none;
 }
 
 .modal-p{
@@ -281,15 +283,6 @@ dd {
     color:#f00;
 }
 
-#modal-content{
-    /*追加分*/
-    z-index:2;
-}
-
-#modal-content{
-    /*追加分*/
-    position:fixed;
-}
 
 #modal-overlay{
     z-index:1;

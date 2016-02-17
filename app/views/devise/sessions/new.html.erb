@@ -1,11 +1,5 @@
 <div id="modal-content">
-  <p>「閉じる」か「背景」をクリックするとモーダルウィンドウを終了します。</p>
-  <p><a id="modal-close" class="button-link">閉じる</a></p>
-</div>
-<div id="modal-overlay"></div>
-<p><a id="modal-open" class="button-link">クリックするとモーダルウィンドウを開きます。</a></p>
-
-<h2>Log in</h2>
+  <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -31,3 +25,11 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+  <p><a id="modal-close" class="button-link">閉じる</a></p>
+</div>
+
+<p><a id="modal-open" class="button-link">ログイン</a></p>
+
+
+
