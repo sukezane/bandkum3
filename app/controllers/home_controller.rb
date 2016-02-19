@@ -9,6 +9,7 @@ class HomeController < ApplicationController
       # @conversations = Conversation.involving(current_user).order("created_at DESC")
       @q = User.ransack(params[:q])
      @users = @q.result(distinct: true)
+     # redirect_to :controller => "users", :action => "show"
   end
 
   # GET /users/1

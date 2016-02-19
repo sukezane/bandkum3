@@ -16,32 +16,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
+<!-- facebook login button -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.5&appId=1543592899299614";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!-- /facebook login button -->
+
   </head>
   <body>
-<%= link_to "トップ", root_path %>
-<p class="navbar-text pull-right">
 
 
 
-<% if user_signed_in? %>
-  ようこそ <strong><%= current_user.name %></strong>さん
-  <%= link_to 'プロフィール編集', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "新規登録", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "ログイン", new_user_session_path, :class => 'navbar-link'  %> |
-  <%= link_to "Facebookでログイン", user_omniauth_authorize_path(:facebook) %>
-<% end %>
- <p class="notice"><%= notice %></p>
- <p class="alert"><%= alert %></p>
 
 
 
 <!-- chatty -->
 
-<div class="container">
 
+<%= render "common/header" %>
 <%= yield %>
-  </div>
+<%= render "common/footer" %>
+
 </body>
 </html>

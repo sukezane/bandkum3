@@ -1,0 +1,62 @@
+<% if user_signed_in? %>
+<div id="header">
+  <div class="container">
+    <div class="row">
+      <div class="nav_header">
+        <div class="logo col-xs-2">
+        <%= link_to image_tag("logo/bandkum.png"), root_path %>
+        </div>
+        <div class="search col-xs-5">
+          <input class="search__query" name="keyword" placeholder="検索" type="text" value="">
+          <button class="btn-search" title="検索" type="submit" style="width:10%; height:10%;">
+          <%= image_tag "icon/magnifying47 (1).png", :size => "30x30" %>
+           
+          </button>
+        </div>
+        <div class="current_account col-xs-2">
+        <%= link_to  edit_user_registration_path, :class => 'navbar-link' do %>
+         <%= image_tag("icon/user168 (2).png" , :size => "30x30" ) %>
+          <strong><%= current_user.name %></strong>
+          <% end %>
+        </div>
+        <div class="header_menu col-xs-3">
+          <%= image_tag "icon/multiple25 (4).png" %>
+          <%= image_tag "icon/speech balloon7 (1).png" %>
+          <%= link_to image_tag("icon/world91 (5).png"), root_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% else %>
+
+<div id="header">
+  <div class="container">
+    <div class="row">
+      <div class="upper_header col-xs-12">
+        <div class="upper_header_left">
+          <div class="top_logo">
+            <%= link_to root_path do %>
+             <%= image_tag 'logo/bandkum_logo_white.png' %>
+             <% end %>
+          </div>
+        </div>
+        <div class="upper_header_right">
+          <p class="navbar-text pull-right">
+            <% if user_signed_in? %>
+              ようこそ <strong><%= current_user.name %></strong>さん
+              <%= link_to 'プロフィール編集', edit_user_registration_path, :class => 'navbar-link' %> |
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <% else %>
+              <a id="modal-open" class="button-link">ログイン</a>
+            <% end %>
+             <p class="notice"><%= notice %></p>
+             <p class="alert"><%= alert %></p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>

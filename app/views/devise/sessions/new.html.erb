@@ -1,3 +1,4 @@
+<!-- modal contents -->
 <div id="modal-content">
   <h2>Log in</h2>
 
@@ -28,8 +29,46 @@
 
   <p><a id="modal-close" class="button-link">閉じる</a></p>
 </div>
+<!-- /modal contents -->
 
-<p><a id="modal-open" class="button-link">ログイン</a></p>
 
+<div class="lower_header col-xs-12">
+  <div class="title_and_signup pull-right">
+    <h1>バンドクム</h1>
+    <h3>XXXXXXXXXXXXXXXX<br>XXXXXXXXXXXXXXXX</h3>
+    <div class="facebook">
+       <!-- <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div> -->
+       <a class="FbBtn" href="https://www.facebook.com/dialog/oauth?client_id={your-app-id}&amp;redirect_uri={redirect-uri}">
+   <div class="FbBtnLabel">Facebookでログイン</div>
+   <%#= link_to "Facebookでログイン", user_omniauth_authorize_path(:facebook) %>
+</a>
 
+        <p>または、Emailでの登録は <%= link_to "こちら", new_user_registration_path, :class => 'navbar-link'  %></p>
+    </div>
+  </div>
+</div>
+
+<!-- content -->
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="characters">
+        <div class="col-xs-4">
+        <%= image_tag "top/s512_f_business_31_0nbg.png", :size => "16x16" %>
+          <p>XXXXXXXXXXXXXXX<br>XXXXXXXXXXXXXXX</p>
+        </div>
+        <div class="col-xs-4">
+        <%= image_tag "top/s512_f_event_20_2nbg.png" ,:size => "16x16"%>
+          <p>XXXXXXXXXXXXXXX<br>XXXXXXXXXXXXXXX</p>
+        </div>
+        <div class="col-xs-4">
+        <%= image_tag "top/s512_f_business_81_0nbg.png" ,:size => "16x16"%>
+           <p>XXXXXXXXXXXXXXX<br>XXXXXXXXXXXXXXX</p>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /content -->
 
