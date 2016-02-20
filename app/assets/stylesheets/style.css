@@ -440,3 +440,17 @@ span {
     background-color: #ffffff;
 }
 /* /_header.html*/
+
+
+/* users/show.html*/
+.user_name{
+    color: #ffffff;
+    font-size:40px;
+}
+
+.user_header{
+    background: gray;
+    width: 102%;
+    height:400px;
+}
+/* /users/show.html*/

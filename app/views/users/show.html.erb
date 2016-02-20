@@ -1,14 +1,56 @@
-<%= @user.email %>
+<%#= @user.email %>
 
-<%= link_to "current_user_show", current_user %>
+<%#= link_to "current_user_show", current_user %>
 
-<% @users.each_with_index do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td>
-        <%= link_to "メッセージ", "#", class: "btn btn-success btn-xs start-conversation",
-                    "data-sid" => current_user.id, "data-rip" => user.id %>
-      </td>
-      <td><%= link_to 'Show', root_path %></td>
-    </tr>
-<% end %>
+<!-- content -->
+<div id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 user_header">
+        <% @users.each_with_index do |user| %>
+          <tr>
+          <td><div class="user_name"><%= user.name%></div></td>
+            <td>
+              <%= link_to "メッセージ", "#", class: "btn btn-success btn-xs start-conversation",
+                          "data-sid" => current_user.id, "data-rip" => user.id %>
+            </td>
+          </tr>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-9">
+        <div><!-- main -->
+          <ul>
+            <li>現在地：大阪府大東市</li>
+            <li>誕生日：1990年3月7日（25歳）</li>
+            <li>職業：サラリーマン</li>
+            <li>楽器歴：ギター（10年）</li>
+            <li>バンド歴：コピーバンド（10年）</li>
+            <li>好きなジャンル：パンク、ロック（選択）</li>
+            <li>好きなアーティスト：サカナクション、マキシマムザホルモン</li>
+            <li>自己紹介</li>
+            <li>タグ:ミスチル、ビーズ、アコギ、エレキ、ベース</li>
+          </ul>
+        </div>
+      </div>
+      <!-- introduction -->
+      <div>
+
+      </div>
+      <!-- tags -->
+      <div>
+        
+      </div>
+      <div class="col-xs-3">
+        <div><!-- 気になるリスト -->
+           
+         </div>
+         <div><!-- この人を気になっている人 -->
+           
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /content -->
