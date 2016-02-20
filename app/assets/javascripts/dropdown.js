@@ -21,10 +21,10 @@ $(function () {
   });  
   
   // メニュー領域外をクリックしたらメニューを閉じる
-  $('body').click(function() {
-    if (over_flg == false) {
-      $('span').removeClass('selected');
-      $('ul').slideUp('fast');
-    }
-  });
+  // $('body').click(function() {
+  //   if (over_flg == false) {
+  //     $('span').removeClass('selected');
+  //     $('ul').slideUp('fast');
+  //   }
+  // });
 });
