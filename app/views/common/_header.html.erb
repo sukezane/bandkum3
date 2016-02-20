@@ -23,6 +23,15 @@
           <%= image_tag "icon/multiple25 (4).png" %>
           <%= image_tag "icon/speech balloon7 (1).png" %>
           <%= link_to image_tag("icon/world91 (5).png"), root_path %>
+          <!-- dropdown -->
+          <div id="menu">
+            <div class="child">
+              <span>⬇︎</span>
+              <ul>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

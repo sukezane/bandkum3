@@ -1,6 +1,11 @@
 <div class="container">
+  <div class="row lower_header">
+    <div class="header">
+      
+    </div>
+  </div>
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-xs-3 search_form">
       <%= sort_link(@q, :updated_at, 'おすすめ', default_order: :desc) %>
       <%= sort_link(@q, :updated_at, '新着', default_order: :desc) %>
       <%= sort_link(@q, :updated_at, '人気', default_order: :desc) %>
@@ -27,7 +32,7 @@
           <%= f.submit '検索', class: "btn btn-primary" %>
       <% end %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-xs-9 member_lists">
       <table>
         <!-- <thead>
           <tr>
